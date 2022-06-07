@@ -22,6 +22,7 @@ class RatingsReviews extends React.Component {
       apiMaster
         .getReviewsOfProduct(this.props.currentProductID, 20)
         .then(({ data }) => {
+          console.log('what', data.results);
           let ratings = this.getRatings(data.results);
           let recommend = this.getRecommendation(data.results);
           this.setState({
@@ -81,7 +82,7 @@ class RatingsReviews extends React.Component {
           currentRating={this.props.currentRating}
           recommend={this.state.recommendProduct}
           currentProductRatings={this.state.currentProductRatings}
-          averageRating={this.props.averageRating}
+          averageRating={3.5 || this.props.averageRating}
           handleFilter={this.filterReviews}
         />
       </div>
