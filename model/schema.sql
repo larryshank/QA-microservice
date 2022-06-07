@@ -1,0 +1,7 @@
+CREATE DATABASE qa;
+
+\c qa;
+
+CREATE TABLE IF NOT EXISTS questions (
+
+)
