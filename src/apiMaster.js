@@ -1,42 +1,75 @@
 import axios from "axios";
-const url = "http://18.224.200.47";
+const url = process.env.URL;
 
 const getProductList = () => {
-  return axios.get(`${url}/products`);
+
+  return axios.get(`${url}/products`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getProductInfo = (id = 1) => {
-  return axios.get(`${url}/products/${id}`);
+const getProductInfo = (id = 66642) => {
+  return axios.get(`${url}/products/${id}`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getProductStyles = (id = 1) => {
-  return axios.get(`${url}/products/${id}/styles`);
+const getProductStyles = (id = 66642) => {
+  return axios.get(`${url}/products/${id}/styles`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getRelatedProducts = (id = 1) => {
-  return axios.get(`${url}/products/${id}/related`);
+const getRelatedProducts = (id = 66642) => {
+  return axios.get(`${url}/products/${id}/related`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getQA = (id = 1) => {
-  return axios.get(`${url}/qa/${id}`);
+const getQA = (id = 66642) => {
+  return axios.get(`${url}/qa/questions/?product_id=66642`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getReviewMetaData = (id = 1) => {
-  return axios.get(`${url}/reviews/${id}/meta`);
+const getReviewMetaData = (id = 66642) => {
+  return axios.get(`${url}/reviews/meta/?product_id=66642`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
-const getReviewsOfProduct = (id = 1, sortString = "relevant", count = 20) => {
+const getReviewsOfProduct = (id = 66642, sortString = "relevant", count = 20) => {
   return axios.get(
-    `${url}/reviews/${id}/list?sort=${sortString}:asc&count=${count}}`
+    `${url}/reviews/?product_id=66642`, {
+      headers: {
+        'Authorization': "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"
+      }
+    }
   );
 };
 
 const reportReview = (reviewId) => {
-  return axios.put(`${url}/reviews/report/${reviewId}`);
+  return axios.put(`${url}/reviews/report/${reviewId}`, {
+    headers: {
+      'Authorization': "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"
+    }
+  });
 };
 
 const postReview = (
-  id = 1,
+  id = 66642,
   rating,
   summary,
   body,
@@ -55,11 +88,16 @@ const postReview = (
     email: email,
     photos: photos,
     characteristics: characteristics,
+    headers: {
+      'Authorization': "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"
+    }
   });
 };
 
 const getCart = (userToken) => {
-  return axios.get(`${url}/cart/${userToken}`);
+  return axios.get(`${url}/cart/${userToken}`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const addToCart = (user_token, sku_id) => {
@@ -68,11 +106,16 @@ const addToCart = (user_token, sku_id) => {
   return axios.post(`${url}/cart/`, {
     user_token: user_token,
     sku_id: sku_id,
+    headers: {
+      'Authorization': "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"
+    }
   });
 };
 
 const getSpecificAnswers = (questionId) => {
-  return axios.get(`${url}/qa/${questionId}/answers`);
+  return axios.get(`${url}/qa/questions/${questionId}/answers`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const askQuestion = (id, text, name, email) => {
@@ -80,6 +123,9 @@ const askQuestion = (id, text, name, email) => {
     body: text,
     name: name,
     email: email,
+    headers: {
+      'Authorization': "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"
+    }
   });
 };
 
@@ -89,23 +135,34 @@ const answerQuestion = (questionId, text, name, email, photos = []) => {
     name: name,
     email: email,
     photos: photos,
+    headers: {
+      'Authorization': "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"
+    }
   });
 };
 
 const markQAsHelpful = (questionId) => {
-  return axios.put(`${url}/qa/question/${questionId}/helpful`);
+  return axios.put(`${url}/qa/question/${questionId}/helpful`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const reportQuestion = (questionId) => {
-  return axios.put(`${url}/qa/question/${questionId}/report`);
+  return axios.put(`${url}/qa/question/${questionId}/report`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const markAnsAsHelpful = (answerID) => {
-  return axios.put(`${url}/qa/answer/${answerID}/helpful`);
+  return axios.put(`${url}/qa/answer/${answerID}/helpful`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const reportAns = (answerID) => {
-  return axios.put(`${url}/qa/answer/${answerID}/report`);
+  return axios.put(`${url}/qa/answer/${answerID}/report`, {headers: {
+    'Authorization': "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"
+  }});
 };
 
 const apiMaster = {

@@ -1,5 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
+const Dotenv = require('dotenv-webpack');
+
 
 const config = {
   entry: ["react-hot-loader/patch", "./src/index.js"],
@@ -7,6 +9,9 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  plugins: [
+    new Dotenv()
+  ],
   module: {
     rules: [
       {
