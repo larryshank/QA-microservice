@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS questions (
   date_written bigint,
   asker_name varchar(255),
   asker_email varchar(255),
-  reported integer,
-  helpful integer
+  reported integer DEFAULT 0,
+  helpful integer DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS answers (
@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS answers (
   date_written bigint,
   answerer_name varchar(255),
   answerer_email varchar(255),
-  reported integer,
-  helpful integer,
+  reported integer DEFAULT 0,
+  helpful integer DEFAULT 0,
   CONSTRAINT fk_questions
     FOREIGN KEY (question_id)
     REFERENCES questions(id)
@@ -35,3 +35,9 @@ CREATE TABLE IF NOT EXISTS answers_photos (
     FOREIGN KEY (answer_id)
     REFERENCES answers(id)
 );
+
+create index answer_id on answers_photos(answer_id);
+
+create index question_id on answers(question_id);
+
+create index product_id on questions(product_id);
