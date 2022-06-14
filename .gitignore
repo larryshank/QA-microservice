@@ -91,8 +91,6 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# Serverless directories
-.serverless/
 
 # FuseBox cache
 .fusebox/
@@ -102,3 +100,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+*.pem
+
+/Users/shank/HackReactor/SDC/ubuntu@ec2-18-222-193-100.us-east-2.compute.amazonaws.com
+
+*.sql
